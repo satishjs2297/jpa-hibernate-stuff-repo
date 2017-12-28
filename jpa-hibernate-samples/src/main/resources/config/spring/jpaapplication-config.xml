@@ -10,10 +10,10 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 
-	<context:component-scan base-package="com.alti.jpa.hibernate.dao" />
+	<context:component-scan base-package="com.accolite.au.jpa.dao" />
 	
 	<!-- JPA Repositories is required for loading the spring data repositories -->
-	<jpa:repositories base-package="com.alti.jpa.hibernate.dao.rerpository" />
+	<jpa:repositories base-package="com.accolite.au.jpa.dao.rerpository" />
 	
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" >
 		<property name="entityManagerFactory" ref="entityManagerFactory"/>
@@ -26,7 +26,7 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="ALTI_DBUNIT" />
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="com.alti.jpa.hibernate.model" />
+		<property name="packagesToScan" value="com.accolite.au.jpa.model" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="database" value="MYSQL" />
@@ -36,16 +36,16 @@
 		</property>
 		<property name="jpaProperties">
 			<props>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
 			</props>
 		</property>
 	</bean>
 	
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="url" value="jdbc:mysql://localhost:3306/vigdb"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/au-2018"/>
 		<property name="username" value="root"/>
-		<property name="password" value="root"/>
+		<property name="password" value="Admin1234"/>
 	</bean>
 
 

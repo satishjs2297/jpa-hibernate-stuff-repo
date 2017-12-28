@@ -9,15 +9,15 @@
 		
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
-		<class>com.alti.jpa.hibernate.model.Phone</class>
-		<class>com.alti.jpa.hibernate.model.PhoneMetaData</class>
+		<class>com.accolite.au.jpa.model.Phone</class>
+		<class>com.accolite.au.jpa.model.PhoneMetaData</class>
 		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/vigdb" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/au-2018" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="root" />
 		</properties>
