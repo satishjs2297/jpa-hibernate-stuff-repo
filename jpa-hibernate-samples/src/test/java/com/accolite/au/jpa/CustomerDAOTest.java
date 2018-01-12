@@ -34,59 +34,24 @@ public class CustomerDAOTest {
 
 	@Test
 	public void testPersistCustomer() {
-		Customer customer = new Customer("Mani", "HouseWife");
-		customerDAO.persistCustomer(customer);
-		Account account = new Account("Mani", "Savings");
+		Customer customer = new Customer("abc123", "Business holder");
+
+		Account account = new Account("abc123", "Savings");
+		Account account2 = new Account("abc123", "current", customer);
 		account.setCustomer(customer);
 		customer.getAccounts().add(account);
-		customerDAO.persistCustomer(account);
+		customer.getAccounts().add(account2);
+		customerDAO.persistCustomer(customer);
+//		customerDAO.persistCustomer(account);
+//		customerDAO.persistCustomer(account2);
 
-	}
-
-	/*@Ignore @Test
-	public void testSaveCustomer() {
-		
-		EntityManager entityManager = eManagerFactory.createEntityManager();
-		entityManager.getTransaction().begin();
-		
-		Stock stock = new Stock();
-		stock.setStockCode("7052");
-		stock.setStockName("PADINI");
-		entityManager.persist(stock);
-		
-		StockDailyRecord stockDailyRecords = new StockDailyRecord();
-		stockDailyRecords.setPriceOpen(new Float("1.2"));
-		stockDailyRecords.setPriceClose(new Float("1.1"));
-		stockDailyRecords.setPriceChange(new Float("10.0"));
-		stockDailyRecords.setVolume(3000000L);
-		stockDailyRecords.setDate(new Date());
-
-		stockDailyRecords.setStock(stock);
-		stock.getStockDailyRecords().add(stockDailyRecords);
-		entityManager.persist(stockDailyRecords);
-		
-		entityManager.getTransaction().commit();
 	}
 	
 	@Test
-	public void testSaveCustomerwithAccount(){
-		
-		EntityManager entityManager = eManagerFactory.createEntityManager();
-		entityManager.getTransaction().begin();
-		
-		Customer cust = new Customer("Veerraju", "Business");
-		entityManager.persist(cust);
-		
-		Account account = new Account("IciciAccount", "Savings");
-		account.setCustomer(cust);
-		cust.getAccounts().add(account);
-		
-		entityManager.persist(account);
-		
-		entityManager.getTransaction().commit();
-		
+	public void testGetCustomByIdAndCustName() {
+		customerDAO.getCustomByIdAndCustName(7l, "abc123");
 	}
-*/
+
 	
 
 }

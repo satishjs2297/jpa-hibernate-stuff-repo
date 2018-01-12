@@ -6,12 +6,15 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -74,7 +77,7 @@ public class Customer implements Serializable {
 	}
 
 
-	@OneToMany(fetch=FetchType.LAZY, mappedBy = "customer")
+	@OneToMany(mappedBy = "customer", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	public Set<Account> getAccounts() {
 		return this.accounts;
 	}
@@ -88,8 +91,7 @@ public class Customer implements Serializable {
 	@Override
 	public String toString() {
 		final int maxLen = 10;
-		return "Customer [custId=" + custId + ", custName=" + custName + ", custType=" + custType + ", accounts="
-				+ (accounts != null ? toString(accounts, maxLen) : null) + "]";
+		return "Customer [custId=" + custId + ", custName=" + custName + ", custType=" + custType + " ]";
 	}
 	private String toString(Collection<?> collection, int maxLen) {
 		StringBuilder builder = new StringBuilder();

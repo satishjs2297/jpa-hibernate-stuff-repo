@@ -5,10 +5,6 @@ import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-/**
- * @author syandagudita
- *
- */
 @Entity
 @DiscriminatorValue(value="BValue")
 public class B extends A implements Serializable {

@@ -2,6 +2,8 @@ package com.accolite.au.jpa.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,6 +35,13 @@ public class Account implements Serializable {
 		this.acctName = acctName;
 		this.acctType = acctType;
 	}
+	
+	public Account(String acctName, String acctType, Customer customer) {
+		super();
+		this.acctName = acctName;
+		this.acctType = acctType;
+		this.customer = customer;
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -52,6 +61,7 @@ public class Account implements Serializable {
 		this.acctName = acctName;
 	}
 
+	
 	public String getAcctType() {
 		return this.acctType;
 	}
@@ -60,7 +70,7 @@ public class Account implements Serializable {
 		this.acctType = acctType;
 	}
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name = "CUSTID", nullable=false)
 	public Customer getCustomer() {
 		return this.customer;

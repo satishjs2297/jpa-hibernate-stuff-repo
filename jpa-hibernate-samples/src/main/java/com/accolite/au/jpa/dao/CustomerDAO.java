@@ -14,7 +14,7 @@ import com.accolite.au.jpa.model.Customer;
 
 
 @Repository
-public class CustomerDAO {
+public class CustomerDAO <T extends Object> {
 	
 	@PersistenceContext(unitName="ALTI_DBUNIT")
 	private EntityManager eManager;
@@ -22,7 +22,7 @@ public class CustomerDAO {
 	@Autowired
 	private CustomerRepository customerRepo;
 	
-	public CustomerDAO() {
+	public CustomerDAO() {		
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -32,10 +32,20 @@ public class CustomerDAO {
 	
 	@Transactional(propagation=Propagation.REQUIRED)
 	public void persistCustomer(Object customer) {
-		//eManager.getTransaction().begin();
-			eManager.persist(customer);
-		//eManager.getTransaction().commit();
+		eManager.persist(customer);
 	}
+	
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Customer getCustomByIdAndCustName(Long custId, String custName) {
+		//Customer customer = eManager.find(Customer.class, custId);
+		Customer customer = customerRepo.findCustomerByCustIdAndCustName(custId, custName);
+		System.out.println("customer :: "+customer);
+		System.out.println("******************************");
+		System.out.println("Account:: "+customer.getAccounts());
+		return customer;
+	}
+	
+	
 	
 	@Transactional(propagation=Propagation.REQUIRED)
 	public void saveCustomer(Customer customer){

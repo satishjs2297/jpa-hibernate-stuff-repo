@@ -5,7 +5,6 @@ package com.accolite.au.jpa.model;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
 
 /**
  * @author syandagudita
@@ -49,5 +48,13 @@ public class Q extends P {
 		this.qId = qId;
 	}
 	
-	
+	public static void main(String[] args) {
+		Q q = new Q();
+		q.setpId(123);
+		q.setpName("abc");
+		
+		q.setqId("44234");
+		q.setqName("pqr");
+		
+	}
 }

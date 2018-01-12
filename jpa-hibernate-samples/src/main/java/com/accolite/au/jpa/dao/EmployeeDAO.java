@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accolite.au.jpa.model.Employee;
-import com.accolite.au.jpa.model.ZEntity;
 
 
 @Repository
